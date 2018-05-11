@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'report-app',
   template: `
-    <h2>Hello World</h2>
+    <nav-bar></nav-bar>
+    <report-list></report-list>
   `
 })
 export class ReportAppComponent {
