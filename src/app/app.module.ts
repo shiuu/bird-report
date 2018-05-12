@@ -42,7 +42,7 @@ import { ReportResolver } from './reports/report-resolver.service';
 })
 export class AppModule { }
 
-function checkDirtyState(component:CreateReportComponent) {
+export function checkDirtyState(component:CreateReportComponent) {
   if (component.isDirty)
     return window.confirm('You have not saved this report, Do you really want to cancel?');
 

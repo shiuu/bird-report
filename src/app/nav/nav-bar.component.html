@@ -7,9 +7,10 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <a [routerLink]="['/reports']">My Reports</a>
+          <a [routerLink]="['/reports']" routerLinkActive="active" 
+                [routerLinkActiveOptions]="{exact:true}">My Reports</a>
         </li>
-        <li><a [routerLink]="['/reports/new']">New Report</a></li>
+        <li><a [routerLink]="['/reports/new']" routerLinkActive="active">New Report</a></li>
       </ul>
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
