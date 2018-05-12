@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ReportAppComponent } from './report-app.component';
 import { NavBarComponent } from './nav/nav-bar.component';
@@ -11,11 +12,14 @@ import { CreateReportComponent } from './reports/create-report.component';
 
 import { appRoutes } from './routes';
 import { ReportService } from './reports/shared/report.service';
+import { ReportListResolver } from './reports/report-list-resolver.service';
+import { ReportResolver } from './reports/report-resolver.service';
 
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   declarations: [
     ReportAppComponent,
@@ -27,6 +31,8 @@ import { ReportService } from './reports/shared/report.service';
   ],
   providers: [
     ReportService,
+    ReportListResolver,
+    ReportResolver,
     {
       provide: 'canDeactivateCreateReport', 
       useValue: checkDirtyState     

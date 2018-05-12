@@ -5,6 +5,7 @@ export interface IReport {
     place: string;
     state: string;
   };
+  notes: string;
   species: ISpecies[]; 
 }
 

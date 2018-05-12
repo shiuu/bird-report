@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from './shared/report.service';
+import { IReport } from './shared/report.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   template: `
@@ -15,11 +17,12 @@ import { ReportService } from './shared/report.service';
   `
 })
 export class ReportListComponent implements OnInit {
-  reports: any[];
+  reports: IReport[]; // any[];
 
-  constructor(private reportService: ReportService){ }
+  constructor(private reportService: ReportService, private route:ActivatedRoute){ }
 
   ngOnInit(){
-    this.reports = this.reportService.getReports();
+    // this.reports = this.reportService.getReports();
+    this.reports = this.route.snapshot.data['reports'];
   }
 }

@@ -8,11 +8,13 @@ import {
 import {
   CreateReportComponent
 } from './reports/create-report.component';
+import { ReportListResolver } from './reports/report-list-resolver.service';
+import { ReportResolver } from './reports/report-resolver.service';
 
 
 export const appRoutes:Routes = [
   { path: 'reports/new', component: CreateReportComponent, canDeactivate: ['canDeactivateCreateReport'] },
-  { path: 'reports', component: ReportListComponent},
-  { path: 'reports/:id', component: ReportDetailsComponent},
+  { path: 'reports', component: ReportListComponent, resolve: {reports: ReportListResolver}},
+  { path: 'reports/:id', component: ReportDetailsComponent, resolve: {report: ReportResolver}},
   { path: '', redirectTo: '/reports', pathMatch: 'full'}
 ]

@@ -1,13 +1,39 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/RX';
+import { catchError } from 'rxjs/operators';
+
+import { IReport } from './report.model';
 
 @Injectable()
 export class ReportService {
-  getReports() {
-    return REPORTS;
+  constructor(private http: HttpClient) {
+    
+  }
+
+  getReports():Observable<IReport[]> {
+    return this.http.get<IReport[]>('/api/reports')
+      .pipe(catchError(this.handleError<IReport[]>('getReports', [])));
   }
   
-  getReport(id: number){
-    return REPORTS.find(report => report.id === id);
+  // getReports() {
+  //   return REPORTS;
+  // }
+  
+  // getReport(id: number){
+  //   return REPORTS.find(report => report.id === id);
+  // }
+
+  getReport(id:number):Observable<IReport> {
+    return this.http.get<IReport>('/api/reports/' + id)
+      .pipe(catchError(this.handleError<IReport>('getReport')))
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return Observable.of(result as T);
+    }
   }
 }
 
