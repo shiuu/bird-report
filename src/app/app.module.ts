@@ -7,6 +7,7 @@ import { NavBarComponent } from './nav/nav-bar.component';
 import { ReportListComponent } from './reports/report-list.component';
 import { ReportThumbnailComponent } from './reports/report-thumbnail.component';
 import { ReportDetailsComponent } from './reports/report-details/report-details.component';
+import { CreateReportComponent } from './reports/create-report.component';
 
 import { appRoutes } from './routes';
 import { ReportService } from './reports/shared/report.service';
@@ -21,9 +22,23 @@ import { ReportService } from './reports/shared/report.service';
     NavBarComponent,
     ReportListComponent,
     ReportThumbnailComponent,
-    ReportDetailsComponent
+    ReportDetailsComponent,
+    CreateReportComponent
   ],
-  providers: [ReportService],
+  providers: [
+    ReportService,
+    {
+      provide: 'canDeactivateCreateReport', 
+      useValue: checkDirtyState     
+    }
+  ],
   bootstrap: [ReportAppComponent]
 })
 export class AppModule { }
+
+function checkDirtyState(component:CreateReportComponent) {
+  if (component.isDirty)
+    return window.confirm('You have not saved this report, Do you really want to cancel?');
+
+  return true;
+}
