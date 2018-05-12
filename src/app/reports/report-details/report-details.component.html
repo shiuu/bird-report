@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-11">
+      <h2>{{report?.location.place}}, {{report?.location.state}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"><strong>Date:</strong> {{report?.date | date:'d/MM/y'}}</div>
+    <div class="col-md-3"><strong>Species:</strong> {{report?.species.length}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-11">
+      <div class="notes">{{report?.notes}}</div>
+    </div>
+  </div>
+</div>

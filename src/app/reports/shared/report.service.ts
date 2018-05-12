@@ -1,9 +1,13 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ReportService {
   getReports() {
-    return REPORTS
+    return REPORTS;
+  }
+  
+  getReport(id: number){
+    return REPORTS.find(report => report.id === id);
   }
 }
 
@@ -247,4 +251,4 @@ const REPORTS = [
       }
     ]
   }
-]
+];

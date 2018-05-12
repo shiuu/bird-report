@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ReportService } from './shared/report.service';
 
 @Component({
-  selector: 'report-list',
   template: `
   <div>
     <h1>Bird Report</h1>

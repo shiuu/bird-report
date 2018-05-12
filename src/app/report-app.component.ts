@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'report-app',
   template: `
     <nav-bar></nav-bar>
-    <report-list></report-list>
+    <router-outlet></router-outlet>
   `
 })
 export class ReportAppComponent {
