@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
+import { ReportService } from './shared/report.service';
 
 @Component({
   selector: 'report-list',
@@ -14,47 +15,12 @@ import { Component } from '@angular/core'
   </div>
   `
 })
-export class ReportListComponent {
-  reports = [
-    {
-      id: 1,
-      date: '3/31/2018',
-      location: { 
-        place: 'Capertee Valley',
-        state: 'NSW'
-      }
-    },
-    {
-      id: 2,
-      date: '3/24/2018',
-      location: {
-        place: 'Royal National Park',
-        state: 'NSW'
-      }
-    },
-    {
-      id: 3,
-      date: '3/17/2018',
-      location: {
-        place: 'Centennial Park, Sydney',
-        state: 'NSW'
-      }
-    },
-    {
-      id: 4,
-      date: '3/3/2018',
-      location: {
-        place: 'Deniliquin',
-        state: 'NSW'
-      }
-    },
-    {
-      id: 5,
-      date: '2/18/2018',
-      location: {
-        place: 'Pine Island Reserve',
-        state: 'ACT'
-      }
-    },
-  ]
+export class ReportListComponent implements OnInit {
+  reports: any[];
+
+  constructor(private reportService: ReportService){ }
+
+  ngOnInit(){
+    this.reports = this.reportService.getReports();
+  }
 }

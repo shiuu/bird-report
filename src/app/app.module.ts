@@ -6,6 +6,8 @@ import { NavBarComponent } from './nav/nav-bar.component';
 import { ReportListComponent } from './reports/report-list.component';
 import { ReportThumbnailComponent } from './reports/report-thumbnail.component';
 
+import { ReportService } from './reports/shared/report.service';
+
 @NgModule({
   declarations: [
     ReportAppComponent,
@@ -16,7 +18,7 @@ import { ReportThumbnailComponent } from './reports/report-thumbnail.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ReportService],
   bootstrap: [ReportAppComponent]
 })
 export class AppModule { }
