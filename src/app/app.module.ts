@@ -15,6 +15,8 @@ import { appRoutes } from './routes';
 import { ReportService } from './reports/shared/report.service';
 import { ReportListResolver } from './reports/report-list-resolver.service';
 import { ReportResolver } from './reports/report-resolver.service';
+import { AuthService } from './user/auth.service';
+
 
 @NgModule({
   imports: [
@@ -34,6 +36,7 @@ import { ReportResolver } from './reports/report-resolver.service';
   ],
   providers: [
     ReportService,
+    AuthService,
     ReportListResolver,
     ReportResolver,
     {
