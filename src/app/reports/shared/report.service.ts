@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/RX';
 import { catchError } from 'rxjs/operators';
 
@@ -16,17 +16,15 @@ export class ReportService {
       .pipe(catchError(this.handleError<IReport[]>('getReports', [])));
   }
   
-  // getReports() {
-  //   return REPORTS;
-  // }
-  
-  // getReport(id: number){
-  //   return REPORTS.find(report => report.id === id);
-  // }
-
   getReport(id:number):Observable<IReport> {
     return this.http.get<IReport>('/api/reports/' + id)
       .pipe(catchError(this.handleError<IReport>('getReport')))
+  }
+
+  saveReport(report) {
+    let options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.post<IReport>('/api/reports', report, options)
+      .pipe(catchError(this.handleError<IReport>('saveReport')))
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
