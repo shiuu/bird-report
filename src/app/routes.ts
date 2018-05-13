@@ -1,16 +1,11 @@
 import { Routes } from '@angular/router';
 import {
-  ReportListComponent
-} from './reports/report-list.component';
-import {
-  ReportDetailsComponent
-} from './reports/report-details/report-details.component';
-import {
-  CreateReportComponent
-} from './reports/create-report.component';
-import { ReportListResolver } from './reports/report-list-resolver.service';
-import { ReportResolver } from './reports/report-resolver.service';
-
+  ReportListComponent,
+  ReportDetailsComponent,
+  CreateReportComponent,
+  ReportListResolver,
+  ReportResolver
+} from './reports/index';
 
 export const appRoutes:Routes = [
   { path: 'reports/new', component: CreateReportComponent, canDeactivate: ['canDeactivateCreateReport'] },
