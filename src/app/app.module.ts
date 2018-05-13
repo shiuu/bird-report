@@ -16,7 +16,9 @@ import { ReportService } from './reports/shared/report.service';
 import { ReportListResolver } from './reports/report-list-resolver.service';
 import { ReportResolver } from './reports/report-resolver.service';
 import { AuthService } from './user/auth.service';
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 
+let toastr:Toastr = window['toastr'];
 
 @NgModule({
   imports: [
@@ -37,6 +39,7 @@ import { AuthService } from './user/auth.service';
   providers: [
     ReportService,
     AuthService,
+    { provide: TOASTR_TOKEN, useValue: toastr },
     ReportListResolver,
     ReportResolver,
     {
