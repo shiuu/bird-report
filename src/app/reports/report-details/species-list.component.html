@@ -1,0 +1,9 @@
+<div class="row" *ngFor="let aSpecies of species">
+  <div class="col-md-10">
+    <div class="well">
+        <h4>{{aSpecies.name}}</h4>
+        <p><strong>Count:</strong> {{aSpecies?.count}}</p>
+        <p>{{aSpecies.comments}}</p>
+    </div>
+  </div>
+</div>

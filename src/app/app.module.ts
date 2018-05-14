@@ -13,6 +13,7 @@ import {
   ReportThumbnailComponent,
   ReportDetailsComponent,
   CreateReportComponent,
+  SpeciesListComponent,
   ReportService,
   ReportListResolver,
   ReportResolver
@@ -38,7 +39,8 @@ let toastr:Toastr = window['toastr'];
     ReportListComponent,
     ReportThumbnailComponent,
     ReportDetailsComponent,
-    CreateReportComponent
+    CreateReportComponent,
+    SpeciesListComponent
   ],
   providers: [
     ReportService,
