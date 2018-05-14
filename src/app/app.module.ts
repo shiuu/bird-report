@@ -7,13 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReportAppComponent } from './report-app.component';
 import { NavBarComponent } from './nav/nav-bar.component';
 
-
 import { 
   ReportListComponent,
   ReportThumbnailComponent,
   ReportDetailsComponent,
   CreateReportComponent,
   SpeciesListComponent,
+  AddSpeciesComponent,
   ReportService,
   ReportListResolver,
   ReportResolver
@@ -40,7 +40,8 @@ let toastr:Toastr = window['toastr'];
     ReportThumbnailComponent,
     ReportDetailsComponent,
     CreateReportComponent,
-    SpeciesListComponent
+    SpeciesListComponent,
+    AddSpeciesComponent
   ],
   providers: [
     ReportService,

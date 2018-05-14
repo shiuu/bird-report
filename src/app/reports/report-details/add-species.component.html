@@ -1,0 +1,25 @@
+<div class="col-md-12">
+  <h3>Add Species</h3>
+</div>
+<div class="col-md-6">
+  <form [formGroup]="newSpeciesForm" (ngSubmit)="saveSpecies(newSpeciesForm.value)" autocomplete="off">
+    <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty }">
+      <label for="speciesName">Species Name:</label>
+      <em *ngIf="name.invalid && name.dirty">Required</em>
+      <input formControlName="name" id="speciesName" type="text" class="form-control" placeholder="species name..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': count.invalid && count.dirty }">
+      <label for="count">Count:</label>
+      <em *ngIf="count.invalid && count.dirty">Required</em>
+      <input formControlName="count" id="count" type="number" class="form-control" placeholder="how many?" />
+    </div>
+    <div class="form-group" [ngClass]="{'error': comments.invalid && comments.dirty }">
+      <label for="comments">Comments:</label>
+      <em *ngIf="comments.invalid && comments.dirty && comments?.errors.required">Required</em>
+      <em *ngIf="comments.invalid && comments.dirty && comments?.errors.maxLength">Cannot exceed 400 characters</em>
+      <textarea formControlName="comments" id="comments" rows=4 class="form-control" placeholder="comments..."></textarea>
+    </div>
+    <button type="submit" [disabled]="newSpeciesForm.invalid"  class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default">Cancel</button>
+  </form>
+</div>
