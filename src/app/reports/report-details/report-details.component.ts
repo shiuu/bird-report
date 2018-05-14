@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReportService } from '../shared/report.service';
-import { IReport } from '../shared/report.model';
+import { IReport, ISpecies } from '../shared/report.model';
 
 @Component({
   templateUrl: './report-details.component.html',
@@ -11,7 +11,8 @@ import { IReport } from '../shared/report.model';
 })
 export class ReportDetailsComponent {
   report:IReport;
-  
+  addMode:boolean;
+
   constructor(private reportService:ReportService, private route:ActivatedRoute) {
   }
 
@@ -20,5 +21,20 @@ export class ReportDetailsComponent {
     this.route.data.forEach((data) => {
       this.report = data['report'];
     })
+  }
+
+  addSpecies(){
+    this.addMode = true;
+  }
+
+  saveNewSpecies(species:ISpecies) {
+    species.id = this.reportService.getBirdId(species.name);
+    this.report.species.push(species);
+    this.reportService.saveReport(this.report).subscribe();
+    this.addMode = false;
+  }
+
+  cancelAddSpecies() {
+    this.addMode = false;
   }
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISpecies } from '../shared/index';
 
 @Component({
+  selector: 'add-species',
   templateUrl: './add-species.component.html',
   styles: [`
     em {float:right; color:#E05C65; padding-left:10px;}
@@ -14,6 +15,9 @@ import { ISpecies } from '../shared/index';
   `]
 })
 export class AddSpeciesComponent implements OnInit {
+  @Output() saveNewSpecies = new EventEmitter();
+  @Output() cancelAddSpecies = new EventEmitter();
+
   newSpeciesForm: FormGroup;
   name: FormControl;
   count: FormControl;
@@ -33,11 +37,16 @@ export class AddSpeciesComponent implements OnInit {
 
   saveSpecies(formValues) {
     let species:ISpecies = {
-      // id: undefined,
+      id: undefined,
       name: formValues.name,
       count: +formValues.count,
       comments: formValues.comments
-    }
+    };
+    this.saveNewSpecies.emit(species);
     console.log(species);
+  }
+
+  cancel() {
+    this.cancelAddSpecies.emit();
   }
 }

@@ -10,8 +10,9 @@ export interface IReport {
 }
 
 export interface ISpecies {
-  //id: number;
+  id: number;
   name: string;
+  otherNames?: string[];
   //scientificName: string;
   //uncommon: boolean;
   //imageUrl: string;

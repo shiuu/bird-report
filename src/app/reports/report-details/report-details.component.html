@@ -14,5 +14,17 @@
     </div>
   </div>
   <hr>
-  <species-list [species]="report?.species"></species-list>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h3 style="margin:0">Species</h3>
+    </div>
+
+    <div class="col-md-2">
+      <a class="pointable" (click)="addSpecies()">Add Species</a>
+    </div>
+  </div>
+
+  <species-list *ngIf="!addMode" [species]="report?.species"></species-list>
+  <add-species *ngIf="addMode" (saveNewSpecies)="saveNewSpecies($event)" (cancelAddSpecies)="cancelAddSpecies()"></add-species>
 </div>
