@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/RX';
-import { catchError } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 
-import { IReport, ISpecies } from './report.model';
+import { IReport, ISpecies, IBird } from './report.model';
 
 @Injectable()
 export class ReportService {
-  private birds:any[] = BIRDS;
+  private birds:IBird[];
 
   constructor(private http: HttpClient) {
-    
+    this.getBirds().subscribe(value => this.birds = value);
   }
 
   getReports():Observable<IReport[]> {
@@ -20,7 +20,16 @@ export class ReportService {
   
   getReport(id:number):Observable<IReport> {
     return this.http.get<IReport>('/api/reports/' + id)
-      .pipe(catchError(this.handleError<IReport>('getReport')))
+      .pipe(tap( report => {report.species.forEach(s => {
+              let bird = this.getBirdInfo(s.id);
+              s['otherNames'] = bird.otherNames;
+              s['scientificName'] = bird.scientificName;
+              s['uncommon'] = bird.uncommon;
+            });
+            return Observable.of(report as IReport);
+          }),
+        catchError(this.handleError<IReport>('getReport'))
+      )
   }
 
   saveReport(report) {
@@ -29,8 +38,9 @@ export class ReportService {
       .pipe(catchError(this.handleError<IReport>('saveReport')))
   }
 
-  getBirdId(birdName):number {
-    return +this.birds.find(bird => bird.name === birdName).id;
+  getBirds():Observable<IBird[]> {
+    return this.http.get<IBird[]>('/api/birds')
+      .pipe(catchError(this.handleError<IBird[]>('getBirds', [])));
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
@@ -38,6 +48,18 @@ export class ReportService {
       console.error(error);
       return Observable.of(result as T);
     }
+  }
+
+  getBirdId(birdName):number {
+    return this.birds.find(bird => bird.name === birdName).id;
+  }
+
+  getBirdInfo(id: number):IBird {
+    return this.birds.find(bird => bird.id === id);
+  }
+
+  getBirdInfoFromName(birdName: string):IBird {
+    return this.birds.find(bird => bird.name === birdName);
   }
 }
 

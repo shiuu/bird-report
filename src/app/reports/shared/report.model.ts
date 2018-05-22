@@ -9,13 +9,18 @@ export interface IReport {
   species: ISpecies[]; 
 }
 
-export interface ISpecies {
+// Bird species info
+export interface IBird {
   id: number;
   name: string;
   otherNames?: string[];
-  //scientificName: string;
-  //uncommon: boolean;
+  scientificName?: string;
+  uncommon?: boolean;
+}
+
+// The species info in reports
+export interface ISpecies extends IBird {
   //imageUrl: string;
   count: number;
   comments: string;
-}  
+}
