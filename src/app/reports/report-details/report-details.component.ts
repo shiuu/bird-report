@@ -12,6 +12,8 @@ import { IReport, ISpecies } from '../shared/report.model';
 export class ReportDetailsComponent {
   report:IReport;
   addMode:boolean;
+  filter: string = 'all';
+  sortBy: string = 'name';
 
   constructor(private reportService:ReportService, private route:ActivatedRoute) {
   }

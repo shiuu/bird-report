@@ -16,19 +16,23 @@ Ornithologists can submit reports of bird survey on this app. Bird data gathered
 
 ## Project Status
 
-The project is currently a work in progress. The following functionalities are yet to be implemented:
+The following fuctionalities are ready for demo:
+- Display report list, report details;
+- Create new reports;
+- Add new birds in report details;
+- In report details, filtering bird species by common/uncommon birds;
+- In report details, sorting bird species by name or by taxonomic index;
+- Login form, Edit Profile form, Logout.
+
+The following functionalities will be added:
 - Display images for birds.
 - Display an indicator for common/uncommon birds.
 - Validate bird's name according to database. For now, the add-species form works only if you input a valid bird name, i.e. a bird name that exists in the database.
-- In report details, provide option for sorting birds according to names or taxonomy.
-- In report details, provide option to filter common/uncommon birds.
 - Search reports by bird names.
 
-## Getting Started
+## To start the server
 
-Be sure you're running the recommended node version, which is 6.3.0+: `node --version`
-
-To start the server:
+Recommended node version is 6.3.0+: `node --version`
 
 ```
 npm install
@@ -39,4 +43,5 @@ Then in another terminal, run:
 npm start
 ```
 Navigate to http://localhost:4200/
+
 To test Login, please use nzhou/anything
