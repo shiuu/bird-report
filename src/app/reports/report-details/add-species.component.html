@@ -6,8 +6,14 @@
     <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty }">
       <label for="speciesName">Species Name:</label>
       <em *ngIf="name.invalid && name.dirty">Required</em>
-      <input formControlName="name" id="speciesName" type="text" class="form-control" placeholder="species name..." />
+      <input formControlName="name" id="speciesName" type="text" class="form-control"
+        list="birdNames" placeholder="species name..." />
+
+      <datalist id="birdNames">
+        <option *ngFor="let bird of birdList" value="{{bird.name}}">
+      </datalist>
     </div>
+
     <div class="form-group" [ngClass]="{'error': count.invalid && count.dirty }">
       <label for="count">Count:</label>
       <em *ngIf="count.invalid && count.dirty">Required</em>

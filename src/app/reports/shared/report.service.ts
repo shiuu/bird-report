@@ -10,7 +10,11 @@ export class ReportService {
   private birds:IBird[];
 
   constructor(private http: HttpClient) {
-    this.getBirds().subscribe(value => this.birds = value);
+    // this.getBirds().subscribe(value => this.birds = value);
+
+    this.http.get<IBird[]>('/api/birds')
+      .pipe(catchError(this.handleError<IBird[]>('getBirds', [])))
+      .subscribe(value => this.birds = value);
   }
 
   getReports():Observable<IReport[]> {
@@ -38,10 +42,11 @@ export class ReportService {
       .pipe(catchError(this.handleError<IReport>('saveReport')))
   }
 
+  /*
   getBirds():Observable<IBird[]> {
     return this.http.get<IBird[]>('/api/birds')
       .pipe(catchError(this.handleError<IBird[]>('getBirds', [])));
-  }
+  }*/
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -60,6 +65,10 @@ export class ReportService {
 
   getBirdInfoFromName(birdName: string):IBird {
     return this.birds.find(bird => bird.name === birdName);
+  }
+
+  getBirds():IBird[] {
+    return this.birds;
   }
 }
 

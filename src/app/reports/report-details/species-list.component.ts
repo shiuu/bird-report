@@ -29,7 +29,7 @@ export class SpeciesListComponent implements OnChanges{
   }
 }
 
-function sortByNameAsc(s1: ISpecies, s2: ISpecies) {
+export function sortByNameAsc(s1: ISpecies, s2: ISpecies) {
   if(s1.name > s2.name) return 1;
   else if(s1.name === s2.name) return 0;
   else return -1;

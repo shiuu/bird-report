@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ISpecies } from '../shared/index';
+import { ISpecies, IBird, ReportService } from '../shared/index';
+import { sortByNameAsc } from './species-list.component';
 
 @Component({
   selector: 'add-species',
@@ -23,6 +24,11 @@ export class AddSpeciesComponent implements OnInit {
   count: FormControl;
   comments: FormControl;
 
+  birdList: IBird[];
+
+  constructor(private reportService:ReportService) {
+  }
+
   ngOnInit() {
     this.name = new FormControl('', Validators.required);
     this.count = new FormControl('', Validators.required);
@@ -33,6 +39,9 @@ export class AddSpeciesComponent implements OnInit {
       count: this.count,
       comments: this.comments
     });
+
+    this.birdList = this.reportService.getBirds();
+    this.birdList.sort(sortByNameAsc);
   }
 
   saveSpecies(formValues) {
@@ -43,7 +52,6 @@ export class AddSpeciesComponent implements OnInit {
       comments: formValues.comments
     };
     this.saveNewSpecies.emit(species);
-    console.log(species);
   }
 
   cancel() {
