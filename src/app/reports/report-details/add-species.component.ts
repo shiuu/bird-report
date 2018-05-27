@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ISpecies, IBird, ReportService } from '../shared/index';
 import { sortByNameAsc } from './species-list.component';
 
@@ -30,7 +30,10 @@ export class AddSpeciesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.name = new FormControl('', Validators.required);
+    this.birdList = this.reportService.getBirds();
+    this.birdList.sort(sortByNameAsc);
+
+    this.name = new FormControl('', [Validators.required, birdNameValidator(this.birdList)]);
     this.count = new FormControl('', Validators.required);
     this.comments = new FormControl('', [Validators.required, Validators.maxLength(400)]);
 
@@ -39,9 +42,6 @@ export class AddSpeciesComponent implements OnInit {
       count: this.count,
       comments: this.comments
     });
-
-    this.birdList = this.reportService.getBirds();
-    this.birdList.sort(sortByNameAsc);
   }
 
   saveSpecies(formValues) {
@@ -57,4 +57,12 @@ export class AddSpeciesComponent implements OnInit {
   cancel() {
     this.cancelAddSpecies.emit();
   }
+}
+
+/** A bird's name has to from the list */
+function birdNameValidator(birds: IBird[]): ValidatorFn {
+  return (control: AbstractControl): {[key: string]: any} => {
+    let bird:IBird = birds.find(b => b.name == control.value);
+    return bird == undefined ? {'invalidBirdName': {value: control.value}} : null;
+  };
 }

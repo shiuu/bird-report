@@ -3,7 +3,8 @@
 This project is to demostrate the following basic features of Angular 2+ (including Angular 4 and 5):
 - Components, Templates and Data Binding
 - Directives
-- Forms (both template-based and reactive) and Validation
+- Reactive Forms and Template-driven Forms
+- Form Validation (both built-in validators and custom validators)
 - Routing and Navigating
 - Dependency Injection, Services
 - Communicating with the Server Using HTTP, Observables, and Rx
@@ -19,7 +20,7 @@ Ornithologists can submit reports of bird survey on this app. Bird data gathered
 The following fuctionalities are ready for demo:
 - Display report list, report details;
 - Create new reports;
-- Add new birds in report details;
+- Add new birds in reports;
 - In report details, filtering bird species by common/uncommon birds;
 - In report details, sorting bird species by name or by taxonomic index;
 - Login form, Edit Profile form, Logout.
@@ -27,7 +28,6 @@ The following fuctionalities are ready for demo:
 The following functionalities will be added:
 - Display images for birds.
 - Display an indicator for common/uncommon birds.
-- Validate bird's name according to database. For now, the add-species form works only if you input a valid bird name, i.e. a bird name that exists in the database.
 - Search reports by bird names.
 
 ## To start the server

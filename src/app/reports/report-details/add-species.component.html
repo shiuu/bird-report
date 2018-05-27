@@ -5,10 +5,11 @@
   <form [formGroup]="newSpeciesForm" (ngSubmit)="saveSpecies(newSpeciesForm.value)" autocomplete="off">
     <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty }">
       <label for="speciesName">Species Name:</label>
-      <em *ngIf="name.invalid && name.dirty">Required</em>
+      <em *ngIf="name.errors.required && name.dirty">Required</em>
+      <em *ngIf="name.errors.invalidBirdName && name.dirty">Invalid bird name</em>
       <input formControlName="name" id="speciesName" type="text" class="form-control"
         list="birdNames" placeholder="species name..." />
-
+        
       <datalist id="birdNames">
         <option *ngFor="let bird of birdList" value="{{bird.name}}">
       </datalist>
@@ -22,7 +23,7 @@
     <div class="form-group" [ngClass]="{'error': comments.invalid && comments.dirty }">
       <label for="comments">Comments:</label>
       <em *ngIf="comments.invalid && comments.dirty && comments?.errors.required">Required</em>
-      <em *ngIf="comments.invalid && comments.dirty && comments?.errors.maxLength">Cannot exceed 400 characters</em>
+      <em *ngIf="comments.invalid && comments.dirty && comments?.errors.maxlength">Cannot exceed 400 characters</em>
       <textarea formControlName="comments" id="comments" rows=4 class="form-control" placeholder="comments..."></textarea>
     </div>
     <button type="submit" [disabled]="newSpeciesForm.invalid"  class="btn btn-primary">Save</button>
