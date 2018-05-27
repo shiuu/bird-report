@@ -8,7 +8,7 @@ This project is to demostrate the following basic features of Angular 2+ (includ
 - Routing and Navigating
 - Dependency Injection, Services
 - Communicating with the Server Using HTTP, Observables, and Rx
-- Pipes
+- Pipes (both built-in and custom)
 - Lazily loading modules
 
 ## Actual Use
@@ -26,7 +26,6 @@ The following fuctionalities are ready for demo:
 - Login form, Edit Profile form, Logout.
 
 The following functionalities will be added:
-- Display images for birds.
 - Display an indicator for common/uncommon birds.
 - Search reports by bird names.
 

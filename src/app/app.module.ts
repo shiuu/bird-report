@@ -14,6 +14,7 @@ import {
   CreateReportComponent,
   SpeciesListComponent,
   AddSpeciesComponent,
+  ImageNamePipe,
   ReportService,
   ReportListResolver,
   ReportResolver
@@ -41,7 +42,8 @@ let toastr:Toastr = window['toastr'];
     ReportDetailsComponent,
     CreateReportComponent,
     SpeciesListComponent,
-    AddSpeciesComponent
+    AddSpeciesComponent,
+    ImageNamePipe
   ],
   providers: [
     ReportService,

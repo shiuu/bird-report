@@ -1,6 +1,7 @@
 <div class="row" *ngFor="let aSpecies of visibleSpecies">
   <div class="col-md-10">
-    <div class="well">
+    <div class="well" style="min-height: 138px;">
+        <img src="/assets/images/{{aSpecies?.name | imageName}}.png" [alt]="aSpecies?.name | imageName" style="float:right; height:100px;">
         <h4>{{aSpecies.name}}</h4>
         <p><strong>Count:</strong> {{aSpecies?.count}}</p>
         <p>{{aSpecies.comments}}</p>
