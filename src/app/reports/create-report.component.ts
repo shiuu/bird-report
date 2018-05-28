@@ -14,7 +14,8 @@ import { ReportService } from './shared/report.service';
   `]
 })
 export class CreateReportComponent {
-  isDirty:boolean = true
+  newReport;
+  isDirty:boolean = true;
   constructor(private router: Router, private reportService: ReportService) {
   }
 

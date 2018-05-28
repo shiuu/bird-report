@@ -32,6 +32,16 @@ The following functionalities will be added:
 ## To start the server
 
 Recommended node version is 6.3.0+: `node --version`
+```
+npm install
+npm run build
+npm run server
+```
+Navigate to http://localhost:8181/
+
+To test Login, please use nzhou/anything
+
+Or alternatively:
 
 ```
 npm install

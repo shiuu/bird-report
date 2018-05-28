@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "5.2.8",
     "@angular/router": "5.2.8",
     "core-js": "2.5.3",
-    "ngbr-server": "^0.1.0",
+    "ngbr-server": "^0.2.0",
     "ngf-bootstrap": "0.0.5",
     "rxjs": "5.5.6",
     "toastr": "2.1.4",

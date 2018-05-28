@@ -5,8 +5,8 @@
   <form [formGroup]="newSpeciesForm" (ngSubmit)="saveSpecies(newSpeciesForm.value)" autocomplete="off">
     <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty }">
       <label for="speciesName">Species Name:</label>
-      <em *ngIf="name.errors.required && name.dirty">Required</em>
-      <em *ngIf="name.errors.invalidBirdName && name.dirty">Invalid bird name</em>
+        <em *ngIf="name.invalid && name.dirty && name?.errors.required">Required</em> 
+        <em *ngIf="name.invalid && name.dirty && !name?.errors.required && name?.errors.invalidBirdName">Invalid bird name</em>
       <input formControlName="name" id="speciesName" type="text" class="form-control"
         list="birdNames" placeholder="species name..." />
         

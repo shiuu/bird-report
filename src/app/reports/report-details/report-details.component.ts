@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReportService } from '../shared/report.service';
-import { IReport, ISpecies } from '../shared/report.model';
+import { IReport, ISpecies, IBird } from '../shared/report.model';
 
 @Component({
   templateUrl: './report-details.component.html',
@@ -30,7 +30,11 @@ export class ReportDetailsComponent {
   }
 
   saveNewSpecies(species:ISpecies) {
-    species.id = this.reportService.getBirdId(species.name);
+    let bird:IBird = this.reportService.getBirdInfoFromName(species.name);
+    if(bird){
+      species.id = bird.id; //this.reportService.getBirdId(species.name);
+      species['uncommon'] = bird.uncommon;
+    }
     this.report.species.push(species);
     this.reportService.saveReport(this.report).subscribe();
     this.addMode = false;

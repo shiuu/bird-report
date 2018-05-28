@@ -5,7 +5,7 @@
     <div class="form-group" [ngClass]="{'error': newReportForm.controls.date?.invalid && newReportForm.controls.date?.touched}">
       <label for="reportDate">Date:</label>
       <em *ngIf="newReportForm.controls.date?.invalid && (newReportForm.controls.date?.touched)">Required</em>
-      <input (ngModel)="date" name="date" required id="reportDate" type="text" class="form-control" placeholder="format (dd/mm/yyyy)..." />
+      <input (ngModel)="newReport.date" name="date" required id="reportDate" type="text" class="form-control" placeholder="format (dd/mm/yyyy)..." />
     </div>
     
     <div ngModelGroup="location" class="form-group">
@@ -13,14 +13,14 @@
         <div class="col-md-9 form-group" [ngClass]="{'error': newReportForm.controls.location?.place?.invalid && newReportForm.controls.location?.place?.touched}">
           <label for="place">Location:</label>
           <em *ngIf="newReportForm.controls.location?.place?.invalid && (newReportForm.controls.location?.place?.touched)">Required</em>
-          <input (ngModel)="place" name="place" required id="place" type="text" class="form-control" placeholder="Address or description of the location..." />
+          <input (ngModel)="newReport.place" name="place" required id="place" type="text" class="form-control" placeholder="Address or description of the location..." />
         </div>
         <div class="col-md-3" >
           <div class="form-group" [ngClass]="{'error': newReportForm.controls.state?.invalid && newReportForm.controls.state?.touched }">
             <label for="state">State:</label>
             <em *ngIf="newReportForm.controls.state?.invalid && newReportForm.controls.state?.touched">Required</em>
             <!-- <select formControlName="state" class="form-control"> -->
-            <select (ngModel)="state" name="state" required id="state" class="form-control">
+            <select (ngModel)="newReport.state" name="state" required id="state" class="form-control">
               <option value="">select state...</option>
               <option value="ACT">ACT</option>
               <option value="NSW">NSW</option>
@@ -36,8 +36,8 @@
 
     <div class="form-group" [ngClass]="{'error': newReportForm.controls.notes?.invalid && newReportForm.controls.notes?.touched}">
       <label for="notes">Notes:</label>
-      <em *ngIf="newReportForm.controls.notes?.invalid && newReportForm.controls.notes?.touched && newReportForm.controls.notes?.errors.required">Required</em>
-      <textarea (ngModel)="notes" name="notes" required id="notes" rows="5" class="form-control" placeholder="Notes..."></textarea>
+      <em *ngIf="newReportForm.controls.notes?.invalid && newReportForm.controls.notes?.touched && newReportForm.controls.notes?.errors?.required">Required</em>
+      <textarea (ngModel)="newReport.notes" name="notes" required id="notes" rows="5" class="form-control" placeholder="Notes..."></textarea>
     </div>
     
     <button type="submit" [disabled]="newReportForm.invalid" class="btn btn-primary">Save</button>
