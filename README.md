@@ -31,7 +31,7 @@ The following functionalities will be added:
 
 ## To start the server
 
-Recommended node version is 6.3.0+: `node --version`
+Recommended node version is 8.x or higher: `node --version`
 ```
 npm install
 npm run build

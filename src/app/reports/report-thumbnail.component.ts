@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core'
   template: `
     <div [routerLink]="['/reports', report.id]" class="well hoverwell thumbnail">
       <h2>{{report.location.place}}, {{report.location.state}}</h2>
-      <div>Date: {{report.date}}</div>
+      <div>Date: {{report.date | date:'d/MM/y'}}</div>
       <div>Species: {{report.species.length}}</div>
     </div>
   `,
