@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Output, EventEmitter, ViewChildren, QueryList } from '@angular/core';
 import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ISpecies, IBird, ReportService } from '../shared/index';
 import { sortByNameAsc } from './species-list.component';
@@ -15,9 +15,10 @@ import { sortByNameAsc } from './species-list.component';
     .error :ms-input-placeholder { color: #999; }
   `]
 })
-export class AddSpeciesComponent implements OnInit {
+export class AddSpeciesComponent implements OnInit, AfterViewInit {
   @Output() saveNewSpecies = new EventEmitter();
   @Output() cancelAddSpecies = new EventEmitter();
+  @ViewChildren('nameInput') nameInputVia: QueryList<any>;
 
   newSpeciesForm: FormGroup;
   name: FormControl;
@@ -42,6 +43,10 @@ export class AddSpeciesComponent implements OnInit {
       count: this.count,
       comments: this.comments
     });
+  }
+
+  ngAfterViewInit() {
+    this.nameInputVia.first.nativeElement.focus();
   }
 
   saveSpecies(formValues) {

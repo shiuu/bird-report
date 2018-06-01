@@ -10,7 +10,7 @@
         Date has to be in format (dd/mm/yyyy)</em>
       <input (ngModel)="newReport.date" name="date" required pattern="(3[01]|2[0-9]|1[0-9]|0[1-9]|[1-9])\/(1[012]|0[1-9]|[1-9])\/([1-9][0-9]{3})" 
           id="reportDate" type="text" class="form-control" placeholder="format (dd/mm/yyyy)..." />-->
-      <input (ngModel)="newReport.date" name="date" required
+      <input (ngModel)="newReport.date" #dateInput name="date" required
       id="reportDate" type="date" class="form-control"/>
     </div>
     

@@ -7,7 +7,7 @@
       <label for="speciesName">Species Name:</label>
         <em *ngIf="name.invalid && name.dirty && name?.errors.required">Required</em> 
         <em *ngIf="name.invalid && name.dirty && !name?.errors.required && name?.errors.invalidBirdName">Invalid bird name</em>
-      <input formControlName="name" id="speciesName" type="text" class="form-control"
+      <input formControlName="name" #nameInput id="speciesName" type="text" class="form-control"
         list="birdNames" placeholder="species name..." />
         
       <datalist id="birdNames">

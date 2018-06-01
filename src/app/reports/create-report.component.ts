@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, AfterViewInit, ViewChildren, QueryList } from '@angular/core'
 import { Router } from '@angular/router'
 import { ReportService } from './shared/report.service';
 
@@ -13,10 +13,16 @@ import { ReportService } from './shared/report.service';
     .error :ms-input-placeholder { color: #999; }
   `]
 })
-export class CreateReportComponent {
+export class CreateReportComponent implements AfterViewInit{
   newReport;
   isDirty:boolean = true;
+  @ViewChildren('dateInput') dateInputVia: QueryList<any>;
+
   constructor(private router: Router, private reportService: ReportService) {
+  }
+
+  ngAfterViewInit() {
+    this.dateInputVia.first.nativeElement.focus();
   }
 
   saveReport(formValues) {
