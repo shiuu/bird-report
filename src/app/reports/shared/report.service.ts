@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/RX';
+import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
 import { IReport, ISpecies, IBird } from './report.model';
@@ -30,7 +30,7 @@ export class ReportService {
               s['scientificName'] = bird.scientificName;
               s['uncommon'] = bird.uncommon;
             });
-            return Observable.of(report as IReport);
+            return of(report as IReport);
           }),
         catchError(this.handleError<IReport>('getReport'))
       )
@@ -51,7 +51,7 @@ export class ReportService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      return Observable.of(result as T);
+      return of(result as T);
     }
   }
 

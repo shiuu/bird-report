@@ -1,19 +1,19 @@
 # ng Bird Report
 
-This project is to demostrate the following basic features of Angular 4+:
+This project is to demostrate the following basic features of Angular 6:
 - Components, Templates and Data Binding
 - Directives
 - Reactive Forms and Template-driven Forms
 - Form Validation (both built-in validators and custom validators)
 - Routing and Navigating
 - Services and Dependency Injection
-- Communicating with the Server Using HTTP, Observables, and Rx
+- Communicating with the Server Using HTTP, Observables, and RxJS
 - Pipes (both built-in and custom)
 - Lazily loading modules
 
 ## Actual Use
 
-Ornithologists can submit bird survey reports on this web app. Bird data gathered this way is very valuable when composing bird atlases. 
+This project can develop into a full-blown bird reporting platform where ornithologists and bird-watchers submit bird survey reports. Bird data gathered this way is very valuable when composing bird atlases.
 
 ## Project Status
 
