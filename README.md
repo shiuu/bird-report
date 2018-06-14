@@ -31,8 +31,18 @@ The following functionalities will be added:
 - Automated testing.
 
 ## To start the server
+**Option 1: To run using Docker**
+```
+docker compose up
+```
+It will take quite a while to download and build for the first time.
 
-Recommended node version is 8.x or higher: `node --version`
+When the server is up, navigate to http://localhost:8181/
+To test Login, please use nzhou/anything
+
+
+To run with your local node, the recommended node version is 8.x (or higher): `node --version`
+**Option 2**
 ```
 npm install
 npm run build
@@ -42,8 +52,7 @@ Navigate to http://localhost:8181/
 
 To test Login, please use nzhou/anything
 
-Or alternatively:
-
+**Option 3**
 ```
 npm install
 npm run server
