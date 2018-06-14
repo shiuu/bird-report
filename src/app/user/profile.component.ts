@@ -52,6 +52,8 @@ export class ProfileComponent implements OnInit {
       .subscribe(() => {
         this.toastr.success('Profile Saved');
       });
+
+      this.router.navigate(['reports']);
     }
   }
 

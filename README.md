@@ -30,20 +30,20 @@ The following functionalities will be added:
 - Search reports by bird names.
 - Automated testing.
 
-## How to start the server
-There are three different ways to start the server. The first way requires Docker, whereas the other two requires node (recommended node version is 8.x or higher: `node --version`).
+## How to Run
+There are three options to run ngBirdReport. The first is to run in Docker. The other two options require node (recommended node version is 8.x or higher: `node --version`).
 
-**Option 1 To Run Using Docker**
+It will take quite a while to download and build for the first time.
+
+**Option 1. To Run Using Docker**
 ```
 docker-compose up
 ```
-It will take quite a while to download and build for the first time.
-
 When the server is up, navigate to http://localhost:8181/
 
 To test Login, please use nzhou/anything
 
-**Option 2**
+**Option 2.**
 ```
 npm install
 npm run build
@@ -53,7 +53,7 @@ Navigate to http://localhost:8181/
 
 To test Login, please use nzhou/anything
 
-**Option 3**
+**Option 3.**
 ```
 npm install
 npm run server
