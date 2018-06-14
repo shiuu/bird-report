@@ -1,6 +1,6 @@
 # ng Bird Report
 
-This project is to demostrate the following basic features of Angular 6:
+This project is to demostrate the following basic features of Angular 5+ :
 - Components, Templates and Data Binding
 - Directives
 - Reactive Forms and Template-driven Forms
@@ -18,7 +18,7 @@ This project can develop into a full-blown bird reporting platform where ornitho
 ## Project Status
 
 The following fuctionalities are ready for demo:
-- Display report list, report details;
+- Display report list and report details;
 - Create new reports;
 - Add new birds in reports;
 - In report details, filtering bird species by common/uncommon birds;
@@ -30,18 +30,19 @@ The following functionalities will be added:
 - Search reports by bird names.
 - Automated testing.
 
-## To start the server
-**Option 1: To run using Docker**
+## How to start the server
+There are three different ways to start the server. The first way requires Docker, whereas the other two requires node (recommended node version is 8.x or higher: `node --version`).
+
+**Option 1 To Run Using Docker**
 ```
-docker compose up
+docker-compose up
 ```
 It will take quite a while to download and build for the first time.
 
 When the server is up, navigate to http://localhost:8181/
+
 To test Login, please use nzhou/anything
 
-
-To run with your local node, the recommended node version is 8.x (or higher): `node --version`
 **Option 2**
 ```
 npm install
