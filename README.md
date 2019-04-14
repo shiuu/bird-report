@@ -1,6 +1,6 @@
 # ng Bird Report
 
-This project is to demostrate the following basic features of Angular 5+ :
+This project is to demostrate the following basic features of Angular 6+ :
 - Components, Templates and Data Binding
 - Directives
 - Reactive Forms and Template-driven Forms
