@@ -19,9 +19,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ReportListComponent implements OnInit {
   reports: IReport[]; // any[];
 
-  constructor(private reportService: ReportService, private route:ActivatedRoute){ }
+  constructor(private reportService: ReportService, private route: ActivatedRoute) { }
 
-  ngOnInit(){
+  ngOnInit() {
     // this.reports = this.reportService.getReports();
     this.reports = this.route.snapshot.data['reports'];
   }

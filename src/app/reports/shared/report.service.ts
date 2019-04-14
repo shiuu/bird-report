@@ -1,3 +1,4 @@
+// tslint:disable:max-line-length
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -7,25 +8,27 @@ import { IReport, ISpecies, IBird } from './report.model';
 
 @Injectable()
 export class ReportService {
-  private birds:IBird[];
+  private birds: IBird[];
 
   constructor(private http: HttpClient) {
     // this.getBirds().subscribe(value => this.birds = value);
 
     this.http.get<IBird[]>('/api/birds')
-      .pipe(catchError(this.handleError<IBird[]>('getBirds', [])))
-      .subscribe(value => this.birds = value);
+      .subscribe(
+        (value: IBird[]) => this.birds = value,
+        (error: any) => console.error(error)
+      );
   }
 
-  getReports():Observable<IReport[]> {
+  getReports(): Observable<IReport[]> {
     return this.http.get<IReport[]>('/api/reports')
       .pipe(catchError(this.handleError<IReport[]>('getReports', [])));
   }
-  
-  getReport(id:number):Observable<IReport> {
+
+  getReport(id: number): Observable<IReport> {
     return this.http.get<IReport>('/api/reports/' + id)
       .pipe(tap( report => {report.species.forEach(s => {
-              let bird = this.getBirdInfo(s.id);
+              const bird = this.getBirdInfo(s.id);
               s['otherNames'] = bird.otherNames;
               s['scientificName'] = bird.scientificName;
               s['uncommon'] = bird.uncommon;
@@ -33,13 +36,13 @@ export class ReportService {
             return of(report as IReport);
           }),
         catchError(this.handleError<IReport>('getReport'))
-      )
+      );
   }
 
   saveReport(report) {
-    let options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
     return this.http.post<IReport>('/api/reports', report, options)
-      .pipe(catchError(this.handleError<IReport>('saveReport')))
+      .pipe(catchError(this.handleError<IReport>('saveReport')));
   }
 
   /*
@@ -52,31 +55,32 @@ export class ReportService {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);
-    }
+    };
   }
 
-  getBirdId(birdName):number {
+  getBirdId(birdName): number {
     return this.birds.find(bird => bird.name === birdName).id;
   }
 
-  getBirdInfo(id: number):IBird {
+  getBirdInfo(id: number): IBird {
     return this.birds.find(bird => bird.id === id);
   }
 
-  getBirdInfoFromName(birdName: string):IBird {
+  getBirdInfoFromName(birdName: string): IBird {
     return this.birds.find(bird => bird.name === birdName);
   }
 
-  getBirds():IBird[] {
+  getBirds(): IBird[] {
     return this.birds;
   }
 }
 
+/*
 const REPORTS = [
   {
     id: 1,
     date: '3/31/2018',
-    location: { 
+    location: {
       place: 'Capertee Valley',
       state: 'NSW'
     },
@@ -292,7 +296,7 @@ const REPORTS = [
         count: 12,
         comments: ''
       },
-      { 
+      {
         name: 'Sacred Kingfisher',
         count: 1,
         comments: ''
@@ -335,7 +339,7 @@ const BIRDS = [
   { id: 160501,     uncommon: true,      name: "Silver Gull" },
 
   { id: 170101,     uncommon: false,      name: "Rock Dove",  otherNames: [ "Feral Pigeon" ]},
-  
+
   { id: 180101,     uncommon: false,     name: "Sulphur-crested Cockatoo" },
   { id: 180102,     uncommon: true,       name: "Major Mitchell's Cockatoo"},
   { id: 180103,     uncommon: true,       name: "Yellow-tailed Black-Cockatoo"},
@@ -358,13 +362,13 @@ const BIRDS = [
   { id: 270201,     uncommon: true,      name: "Regent Honeyeater" },
   { id: 270202,     uncommon: false,     name: "New Holland Honeyeater" },
   { id: 270203,     uncommon: false,     name: "Yellow-faced Honeyeater" },
-  { id: 270204,     uncommon: false,     name: "Noisy Friarbird" },	
+  { id: 270204,     uncommon: false,     name: "Noisy Friarbird" },
   { id: 270205,     uncommon: false,     name: "Noisy Miner" },
-  
+
   { id: 270301,     uncommon: false,     name: "Silvereye" },
   { id: 270401,     uncommon: false,     name: "Red-browed Finch" },
   { id: 270402,     uncommon: false,     name: "Plum-headed Finch" },
-  
+
   { id: 270501,     uncommon: false,     name: "Black-faced Cuckoo-shrike" },
   { id: 270502,     uncommon: false,     name: "White-bellied Cuckoo-shrike" },
 
@@ -376,10 +380,11 @@ const BIRDS = [
   { id: 271001,     uncommon: false,     name: "Magpie-lark" },
   { id: 271101,     uncommon: false,     name: "Welcome Swallow" },
   { id: 271201,     uncommon: false,     name: "Sparrow" },
-  
+
   { id: 370101,     uncommon: false,     name: "Australian Wood Duck" },
   { id: 370102,     uncommon: false,     name: "Pacific Black Duck" },
   { id: 370103,     uncommon: false,     name: "Grey Teal" },
   { id: 370201,     uncommon: false,     name: "Hardhead" },
   { id: 370301,     uncommon: false,     name: "Black Swan"}
 ];
+*/

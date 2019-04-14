@@ -27,7 +27,7 @@ export class AddSpeciesComponent implements OnInit, AfterViewInit {
 
   birdList: IBird[];
 
-  constructor(private reportService:ReportService) {
+  constructor(private reportService: ReportService) {
   }
 
   ngOnInit() {
@@ -50,7 +50,7 @@ export class AddSpeciesComponent implements OnInit, AfterViewInit {
   }
 
   saveSpecies(formValues) {
-    let species:ISpecies = {
+    const species: ISpecies = {
       id: undefined,
       name: formValues.name,
       count: +formValues.count,
@@ -67,7 +67,7 @@ export class AddSpeciesComponent implements OnInit, AfterViewInit {
 /** A bird's name has to from the list */
 function birdNameValidator(birds: IBird[]): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
-    let bird:IBird = birds.find(b => b.name == control.value);
-    return bird == undefined ? {'invalidBirdName': {value: control.value}} : null;
+    const bird: IBird = birds.find(b => b.name === control.value);
+    return bird === undefined ? {'invalidBirdName': {value: control.value}} : null;
   };
 }

@@ -6,7 +6,7 @@ export interface IReport {
     state: string;
   };
   notes: string;
-  species: ISpecies[]; 
+  species: ISpecies[];
 }
 
 // Bird species info
@@ -20,7 +20,7 @@ export interface IBird {
 
 // The species info in reports
 export interface ISpecies extends IBird {
-  //imageUrl: string;
+  // imageUrl: string;
   count: number;
   comments: string;
 }

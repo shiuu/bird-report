@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReportService } from '../shared/report.service';
 import { IReport, ISpecies, IBird } from '../shared/report.model';
@@ -9,30 +9,30 @@ import { IReport, ISpecies, IBird } from '../shared/report.model';
     .container { padding-left:20px; padding-right:20px; }
   `]
 })
-export class ReportDetailsComponent {
-  report:IReport;
-  addMode:boolean;
-  filter: string = 'all';
-  sortBy: string = 'name';
+export class ReportDetailsComponent implements OnInit {
+  report: IReport;
+  addMode: boolean;
+  filter = 'all';
+  sortBy = 'name';
 
-  constructor(private reportService:ReportService, private route:ActivatedRoute) {
+  constructor(private reportService: ReportService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     // this.report = this.reportService.getReport(+this.route.snapshot.params['id']);
     this.route.data.forEach((data) => {
       this.report = data['report'];
-    })
+    });
   }
 
-  addSpecies(){
+  addSpecies() {
     this.addMode = true;
   }
 
-  saveNewSpecies(species:ISpecies) {
-    let bird:IBird = this.reportService.getBirdInfoFromName(species.name);
-    if(bird){
-      species.id = bird.id; //this.reportService.getBirdId(species.name);
+  saveNewSpecies(species: ISpecies) {
+    const bird: IBird = this.reportService.getBirdInfoFromName(species.name);
+    if (bird) {
+      species.id = bird.id; // this.reportService.getBirdId(species.name);
       species['uncommon'] = bird.uncommon;
     }
     this.report.species.push(species);

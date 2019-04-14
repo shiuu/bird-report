@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'report-thumbnail',
@@ -15,6 +15,6 @@ import { Component, Input } from '@angular/core'
   `]
 })
 export class ReportThumbnailComponent {
-  @Input() report:any
+  @Input() report: any;
 
 }

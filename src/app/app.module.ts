@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReportAppComponent } from './report-app.component';
 import { NavBarComponent } from './nav/nav-bar.component';
 
-import { 
+import {
   ReportListComponent,
   ReportThumbnailComponent,
   ReportDetailsComponent,
@@ -24,7 +24,7 @@ import { appRoutes } from './routes';
 import { AuthService } from './user/auth.service';
 import { TOASTR_TOKEN, Toastr } from './common/index';
 
-let toastr:Toastr = window['toastr'];
+const toastr: Toastr = window['toastr'];
 
 @NgModule({
   imports: [
@@ -52,17 +52,18 @@ let toastr:Toastr = window['toastr'];
     ReportListResolver,
     ReportResolver,
     {
-      provide: 'canDeactivateCreateReport', 
-      useValue: checkDirtyState     
+      provide: 'canDeactivateCreateReport',
+      useValue: checkDirtyState
     }
   ],
   bootstrap: [ReportAppComponent]
 })
 export class AppModule { }
 
-export function checkDirtyState(component:CreateReportComponent) {
-  if (component.isDirty)
+export function checkDirtyState(component: CreateReportComponent) {
+  if (component.isDirty) {
     return window.confirm('You have not saved this report, Do you really want to cancel?');
+  }
 
   return true;
 }

@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, ViewChildren, QueryList } from '@angular/core'
-import { Router } from '@angular/router'
+import { Component, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReportService } from './shared/report.service';
 
 @Component({
@@ -13,9 +13,9 @@ import { ReportService } from './shared/report.service';
     .error :ms-input-placeholder { color: #999; }
   `]
 })
-export class CreateReportComponent implements AfterViewInit{
+export class CreateReportComponent implements AfterViewInit {
   newReport;
-  isDirty:boolean = true;
+  isDirty = true;
   @ViewChildren('dateInput') dateInputVia: QueryList<any>;
 
   constructor(private router: Router, private reportService: ReportService) {
@@ -33,6 +33,6 @@ export class CreateReportComponent implements AfterViewInit{
   }
 
   cancel() {
-    this.router.navigate(['/reports'])
+    this.router.navigate(['/reports']);
   }
 }
